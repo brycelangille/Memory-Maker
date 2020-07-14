@@ -1,14 +1,13 @@
 class UsersController < ApplicationController
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authorize_request, except: :create
   def index
     @users = User.all
-    render json: @users, include: :posts, status: :ok
+    render json: @users
   end
 
   def show
     @users = User.find(params[:id])
-    render json: @users, include: :posts, status: :ok
+    render json: @users
   end
 
   def create
@@ -26,17 +25,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @users = User.find(params[:id])
-    @users.update(user_params)
-    render json: @users, include: :posts, status: :ok
+    @current_user.update!(user_params)
+    render json: @current_user
   end
 
   def destroy
-    @users = User.destroy
-    render json: @users, include: :posts, status: :ok
+    @current_user.destroy
   end
 
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :image_url, :bio)
     end
   end

@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
   def index
     @post = Post.find(params[:post_id])
     @comment = Comment.where(post_id: @post.id)
@@ -18,19 +17,22 @@ class CommentsController < ApplicationController
   
   def update
     @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
+  if @comment.update(comment_params)
     render json: @comment, include: :post, status: :ok
+  else
+    render json: @comment.errors, status: :unprocessable_entity
   end
+end
   
   def destroy
-    @comment = Comment.destroy
-    render json: @comment, include: :post, status: :ok
+    @comment = Comment.find(params[:id])
+    @comment.destroy
   end
   
   private
   
   def comment_params
-    params.require(:comment).permit(post_id, :content)
+    params.require(:comment).permit(:post_id, :user_id, :content)
   end
 
 end
