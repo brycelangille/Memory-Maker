@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authorize_request, only: [:create, :update, :destroy]
   def index
     @post = Post.find(params[:post_id])
     @comment = Comment.where(post_id: @post.id)
@@ -11,8 +12,15 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @comment = Comment.create(comment_params)
+    @comment = Comment.new(comment_params)
+    @comment.user = @current_user
+    @post = Post.find(params[:post_id])
+    @comment.post = @post
+    if @comment.save
     render json: @comment, include: :post, status: :ok
+    else
+      render json: @comment.errors, status: :unprocessable_entity
+    end
   end
   
   def update
@@ -27,6 +35,7 @@ end
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    render json: "Comment Deleted"
   end
   
   private

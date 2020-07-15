@@ -1,5 +1,5 @@
   
-import api from './api-helper';
+import api from './api-config';
 
 export const loginUser = async (loginData) => {
   const resp = await api.post('/auth/login', { authentication: loginData })
