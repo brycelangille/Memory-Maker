@@ -20,7 +20,7 @@ class App extends Component {
   state = {
     currentUser: null,
     posts: null,
-    newPost: null
+    createPost: null
     // users: [],
     // user: [],
   }
@@ -63,10 +63,11 @@ class App extends Component {
     this.setState({ posts })
    }
   
-   handleCreatePost = async (postData) => {
-    const newPost = await createPost(postData);
+  handleCreatePost = async (postData) => {
+     console.log("skateboard")
+     const newPost = await createPost(postData);
     this.setState(prevState => ({
-      foods: [...prevState.posts, newPost]
+      posts: [...prevState.posts, newPost]
     }))
   }
 
@@ -99,7 +100,7 @@ class App extends Component {
           <Route exact path='/Login' render={(props) => <Login handleLogin={this.handleLogin} {...props} currentUser={this.state.currentUser} handleRegister={this.handleRegister} />} />
           <Route exact path='/Register' render={(props) => <Register handleRegister={this.handleRegister} {...props} />} />
           <Route exact path='/users/:id' render={(props) => <UserProfile id={props.match.params.id} />} />
-          <Route exact path='/createpost' render={(props) => <CreatePost newPost={this.state.newPost} />} />
+          <Route exact path='/createpost' render={(props) => <CreatePost handleCreatePost={this.handleCreatePost} currentUser={this.state.currentUser}  />} />
             {/* <Route path='/search' component={SearchPage} render={(props) => <getAllUsers posts={this.state.users} />} /> */}
           </div>
       </div>

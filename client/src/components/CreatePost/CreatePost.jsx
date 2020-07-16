@@ -15,12 +15,12 @@ export default class CreatePost extends Component {
   }
 
   render() {
-    const { CreatePost, history } = this.props;
+    const { handleCreatePost, history } = this.props;
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
-        CreatePost(this.props);
-        history.push('/posts');
+        handleCreatePost;
+        // history.push('/posts');
       }}>
         <h3>Create A Post</h3>
         <label>
@@ -36,8 +36,8 @@ export default class CreatePost extends Component {
           Add Image:
           <input
                     className="input-image-link"
-            placeholder='Image Link'
-            type='image'
+                    placeholder='Image Link'
+                     type='image'
                     value={this.state.image_url}
                     onChange={this.handleChange}
                 />

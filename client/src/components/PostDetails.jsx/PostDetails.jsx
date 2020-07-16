@@ -33,14 +33,14 @@ export default class PostDetails extends Component {
           </div>
   }
         </div>
-        <div>
+        {/* <div>
           {this.state.post.comments && this.state.post.comments.map(comment => 
         <>
-           {/* <img src={comment.image_url} /> */}
+           <img src={comment.image_url} />
                <p>{comment.content}</p>
               </>
       ) }
-        </div> 
+        </div>  */}
         </>
     )
   }
