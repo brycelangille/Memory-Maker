@@ -8,6 +8,7 @@ export default function () {
       <div className="logoThing">
         <img className="logo" src={logo} alt="logo" />
       </div>
-      </div>
+    </div>
+    
   );
 }

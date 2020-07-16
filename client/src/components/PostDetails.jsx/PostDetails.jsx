@@ -10,8 +10,14 @@ export default class PostDetails extends Component {
     }
   }
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     this.getPost(this.props.id)
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if (this.props.id !== prevProps.id) {
+      this.getPost(this.props.id)
+    }
   }
 
   getPost= async (id) => {
@@ -33,14 +39,16 @@ export default class PostDetails extends Component {
           </div>
   }
         </div>
-        {/* <div>
-          {this.state.post.comments && this.state.post.comments.map(comment => 
+        <div>
+          {this.state.post && this.state.post.comments.map(comment => 
         <>
            <img src={comment.image_url} />
-               <p>{comment.content}</p>
+              <p>{comment.content}</p>
+              <img src={comment.user.image_url} />
+              <p>{comment.user.username}</p>
               </>
       ) }
-        </div>  */}
+        </div> 
         </>
     )
   }

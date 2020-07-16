@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 
 export default class CreatePost extends Component {
   state = {
-    Caption: '',
+    captions: '',
     image_url: ''
   }
 
   handleChange = (e) => {
-    const { value } = e.target;
+    const { name, value } = e.target;
     this.setState({
-      captions: value,
-      image_url: value
+      [name]: value
     })
   }
 
@@ -19,13 +18,14 @@ export default class CreatePost extends Component {
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
-        handleCreatePost;
-        // history.push('/posts');
+        handleCreatePost(this.state);
+        history.push('/');
       }}>
         <h3>Create A Post</h3>
         <label>
           Caption:
           <input
+            name="captions"
             className="input-caption"
             type='text'
             value={this.state.caption}
@@ -34,10 +34,11 @@ export default class CreatePost extends Component {
         </label>
         <label>
           Add Image:
-          <input
+          <input 
+                    name='image_url'
                     className="input-image-link"
                     placeholder='Image Link'
-                     type='image'
+                     type='text'
                     value={this.state.image_url}
                     onChange={this.handleChange}
                 />
