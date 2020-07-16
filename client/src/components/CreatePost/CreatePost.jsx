@@ -1,72 +1,49 @@
-import React, { useState } from 'react'
-import './CreatePost.scss'
-import { Redirect } from 'react-router-dom'
-import { createPost } from '../../services/api-helper'
+import React, { Component } from 'react'
 
-export default createAPost = (props) => {
+export default class CreatePost extends Component {
+  state = {
+    Caption: '',
+    image_url: ''
+  }
 
-  const [post, postData] = useState({
-    User_id: '',
-    image_url: '',
-    captions: ''
-  })
-
-  const [isCreated, setCreated] = useState(false)
-
-  const handleChange = (event) => {
-    const { name, value } = event.target
-    setProduct({
-      ...product,
-      [name]: value
+  handleChange = (e) => {
+    const { value } = e.target;
+    this.setState({
+      captions: value,
+      image_url: value
     })
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    const created = await createProduct(product)
-    setCreated({ created })
-  }
-
-  if (isCreated) {
-    return <Redirect to={`/posts`} />
-  }
+  render() {
+    const { CreatePost, history } = this.props;
     return (
-      <form className="create-form" onSubmit={handleSubmit}>
-        <input
-          className="input-name"
-          placeholder='Name'
-          value={product.name}
-          name='name'
-          required
-          autoFocus
-          onChange={handleChange}
-        />
-        <input
-          className="input-price"
-          placeholder='Price'
-          value={product.price}
-          name='price'
-          required
-          onChange={handleChange}
-        />
-        <textarea
-          className="textarea-description"
-          rows={10}
-          placeholder='Description'
-          value={product.description}
-          name='description'
-          required
-          onChange={handleChange}
-        />
-        <input
-          className="input-image-link"
-          placeholder='Image Link'
-          value={product.image_url}
-          name='img_URL'
-          required
-          onChange={handleChange}
-        />
-        <button type='submit' className="submit-button">Submit</button>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        CreatePost(this.props);
+        history.push('/posts');
+      }}>
+        <h3>Create A Post</h3>
+        <label>
+          Caption:
+          <input
+            className="input-caption"
+            type='text'
+            value={this.state.caption}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label>
+          Add Image:
+          <input
+                    className="input-image-link"
+            placeholder='Image Link'
+            type='image'
+                    value={this.state.image_url}
+                    onChange={this.handleChange}
+                />
+        </label>
+        <button>Submit</button>
       </form>
     )
   }
+}

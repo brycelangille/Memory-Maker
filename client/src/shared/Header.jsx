@@ -1,4 +1,6 @@
-import logo from '../shared/Images/MemoryMaker.png'
+import logo from './Images/MemoryMaker.png'
+import React from "react";
+import "./Header.scss";
 
 export default function () {
   return (

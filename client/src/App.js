@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 // import Header from './components/Header'
 
 import { loginUser, registerUser, removeToken, verifyUser } from './services/auth'
-import { getAllPosts } from './services/api-helper'
-import Main from './components/Homepage/Homepage'
-import { withRouter, Route, Switch } from 'react-router-dom';
+import { getAllPosts,  createPost } from './services/api-helper'
+import Header from "./shared/Header.jsx";
+import { withRouter, Route, Link } from 'react-router-dom';
 import Homepage from './components/Homepage/Homepage'
 import UserProfile from './components/UserProfile/UserProfile'
 import Login from './components/Login'
 import Register from './components/Register'
 import PostDetails from './components/PostDetails.jsx/PostDetails';
+import CreatePost from './components/CreatePost/CreatePost'
 // import SearchPage from './pages/search-page/SearchPage'
 // import RecipeDetail from './pages/RecipeDetail/RecipeDetail'
 // import RecipeEdit from './pages/RecipeDetail/RecipeEdit'
@@ -18,7 +19,8 @@ import PostDetails from './components/PostDetails.jsx/PostDetails';
 class App extends Component {
   state = {
     currentUser: null,
-    posts: null
+    posts: null,
+    newPost: null
     // users: [],
     // user: [],
   }
@@ -26,16 +28,19 @@ class App extends Component {
   componentDidMount() {
     this.handleVerify();
     this.getPosts();
+    // this.getOneUser();
   }
 
   handleLogin = async (userData) => {
     const currentUser = await loginUser(userData);
     this.setState({ currentUser })
+    console.log(currentUser)
   }
 
   handleRegister = async (userData) => {
     const currentUser = await registerUser(userData);
     this.setState({ currentUser })
+    console.log(currentUser)
   }
 
   handleLogout = () => {
@@ -56,6 +61,13 @@ class App extends Component {
     const posts = await getAllPosts()
     console.log(posts)
     this.setState({ posts })
+   }
+  
+   handleCreatePost = async (postData) => {
+    const newPost = await createPost(postData);
+    this.setState(prevState => ({
+      foods: [...prevState.posts, newPost]
+    }))
   }
 
   // async componentDidMount() {
@@ -79,12 +91,15 @@ class App extends Component {
           handleLogout={this.handleLogout}
         /> */}
         <div>
+        <Link to="/" >
+          <Header />
+        </Link>
         {this.state.posts && <Route exact path='/' render={(props) => <Homepage posts={this.state.posts} />} />}
-          <Route exact path='/Post/:id' render={(props) => <PostDetails id={props.match.params.id} />} />
-          <Route exact path='/Login' render={(props) => <Login hangleLogin={this.handleLogin} currentUser={this.state.currentUser} handleRegister={this.handleRegister} />} />
-          <Route exact path='/Register' render={(props) => <Register handleRegister={this.handleRegister} />} />
-          <Route exact path='/users/id' render={(props) => <UserProfile id={props.match.params.id} />} />
-          <Route exact path='/createpost' render={(props) => <CreatePost currentUser={props.match.params.currentUser} />} />
+          <Route exact path='/Post/:id' render={(props) => <PostDetails id={props.match.params.id} currentUser={this.state.currentUser}  />} />
+          <Route exact path='/Login' render={(props) => <Login handleLogin={this.handleLogin} {...props} currentUser={this.state.currentUser} handleRegister={this.handleRegister} />} />
+          <Route exact path='/Register' render={(props) => <Register handleRegister={this.handleRegister} {...props} />} />
+          <Route exact path='/users/:id' render={(props) => <UserProfile id={props.match.params.id} />} />
+          <Route exact path='/createpost' render={(props) => <CreatePost newPost={this.state.newPost} />} />
             {/* <Route path='/search' component={SearchPage} render={(props) => <getAllUsers posts={this.state.users} />} /> */}
           </div>
       </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import {loginUser, verifyUser } from '../services/auth'
 import './Login.scss'
+import { handleLogin} from '../services/api-helper'
 import logo from '../shared/Images/MemoryMaker.png'
 
 export default class Login extends Component {
