@@ -1,0 +1,42 @@
+.comment_body {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.usernameicon_commenter {
+  font-size: small;
+  padding: 10px 2px 2px 2px;
+  font-weight: bold;
+}
+
+.commentuser_image {
+  height: 25px;
+  width: 25px;
+  border: black 2px solid;
+  border-radius: 100%;
+  margin: 5px;
+}
+
+.commentContent {
+  font-size: small;
+}
+
+.commentinfo {
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+}
+
+.updatedelete {
+  padding: 10px 2px 2px 2px;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+}
+
+.commentcommentcomment {
+  display: flex;
+  flex-direction: row;
+}

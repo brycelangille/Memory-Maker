@@ -14,10 +14,7 @@ import Register from './components/Register'
 import PostDetails from './components/PostDetails.jsx/PostDetails';
 import CreatePost from './components/CreatePost/CreatePost'
 import CreateComment from './components/CreateComment/CreateComment'
-// import SearchPage from './pages/search-page/SearchPage'
-// import RecipeDetail from './pages/RecipeDetail/RecipeDetail'
-// import RecipeEdit from './pages/RecipeDetail/RecipeEdit'
-// import CreateRecipe from './pages/CreateRecipe/CreateRecipe'
+import UpdatePost from './components/UpdatePost/UpdatePost'
 
 class App extends Component {
   state = {
@@ -25,14 +22,11 @@ class App extends Component {
     posts: null,
     createPost: null,
     visablePost: null
-    // users: [],
-    // user: [],
   }
 
   componentDidMount() {
     this.handleVerify();
     this.getPosts();
-    // this.getOneUser();
   }
 
   handleLogin = async (userData) => {
@@ -97,40 +91,25 @@ class App extends Component {
   }
 
 
-  // async componentDidMount() {
-  //   const users = await getAllUsers()
-  //   console.log(users)
-  //   this.setState({ users })
-  // }
-
-
-  // async componentDidMount() {
-  //   const user = await getOneUser()
-  //   console.log(user)
-  //   this.setState({ user })
-  // }
 
   render() {
     return (
-      <div>
-        {/* <Header
-          currentUser={this.state.currentUser}
-          handleLogout={this.handleLogout}
-        /> */}
+      <div className="body">
         <div>
         <Link to="/" >
           <Header />
           </Link>
           
-          {this.state.posts && <Route exact path='/' render={(props) => <Homepage posts={this.state.posts} setVisablePost={this.setVisablePost} currentUser={this.state.currentUser} handleLogout={this.handleLogout} addNewComment={this.addNewComment} {...props} />} />}
-          {this.state.visablePost && <PostDetails id={this.state.visablePost} currentUser={this.state.currentUser} clearVisablePost={this.clearVisablePost} />}
+          {this.state.posts && <Route exact path='/' render={(props) => <Homepage posts={this.state.posts} setVisablePost={this.setVisablePost} currentUser={this.state.currentUser} handleLogout={this.handleLogout} addNewComment={this.addNewComment} {...props} clearVisablePost={this.clearVisablePost}  />} />}
+          {this.state.visablePost &&  <PostDetails id={this.state.visablePost} currentUser={this.state.currentUser} clearVisablePost={this.clearVisablePost} />}
           <Route exact path='/Login' render={(props) => <Login handleLogin={this.handleLogin} {...props} currentUser={this.state.currentUser} handleRegister={this.handleRegister} />} />
           <Route exact path='/Register' render={(props) => <Register handleRegister={this.handleRegister} {...props} />} />
           <Route exact path='/users/:id' render={(props) => <UserProfile id={props.match.params.id} />} />
           <Route exact path='/createpost' render={(props) => <CreatePost handleCreatePost={this.handleCreatePost} {...props} currentUser={this.state.currentUser} />} />
+          <Route exact path='/post/:id/update' render={(props) => <UpdatePost {...props} currentUser={this.state.currentUser} getPosts={this.getPosts} />} />
             {/* <Route path='/search' component={SearchPage} render={(props) => <getAllUsers posts={this.state.users} />} /> */}
         </div>
-        <Footer />
+        <Footer currentUser={this.state.currentUser}  />
       </div>
     )
   }

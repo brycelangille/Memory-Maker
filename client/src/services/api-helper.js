@@ -51,12 +51,12 @@ export const createComment = async (posts_id, commentData) => {
   return resp.data;
 }
 
-export const putComment = async (posts_id, commentData, id) => {
-  const resp = await api.put(`/posts/${posts_id}/comments/${id}`, { comment: commentData })
+export const putComment = async ( commentData, id) => {
+  const resp = await api.put(`/posts/1/comments/${id}`, { comment: commentData })
   return resp.data;
 }
 
-export const deleteComment = async (posts_id, id) => {
-  const resp = await api.delete(`/posts/${posts_id}/comments/${id}`);
+export const deleteComment = async ( id) => {
+  const resp = await api.delete(`/posts/1/comments/${id}`);
   return resp
 }

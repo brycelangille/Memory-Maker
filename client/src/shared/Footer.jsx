@@ -1,10 +1,11 @@
 import React from 'react'
 import Nav from './Nav'
 
-export default function () {
+
+export default function (props) {
   return (
     <div className="Footer">
-      <Nav />
+      <Nav currentUser={props.currentUser}  />
     </div>
   )
 }

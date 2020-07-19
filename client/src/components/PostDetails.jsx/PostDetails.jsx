@@ -31,7 +31,8 @@ export default class PostDetails extends Component {
       <>
       <div>
         {this.state.post && 
-          <div>
+            <div>
+            <button onClick={this.props.clearVisablePost}>X</button>
           <img src={this.state.post.user.image_url} />
           <p>{this.state.post.user.username}</p>
           <img src={this.state.post.image_url} />

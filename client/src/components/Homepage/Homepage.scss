@@ -1,0 +1,65 @@
+body {
+display: flex;
+text-align: center;
+flex-direction: column;
+width: 100%;
+}
+
+.Posts {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: start;
+  border: lightgray 1px solid;
+  margin: 0 auto;
+}
+
+.Userinfo {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.usericon {
+  height: 40px;
+  width: 40px;
+  border: black 2px solid;
+  border-radius: 100%;
+  margin: 5px;
+}
+
+.usernameicon {
+  font-size: medium;
+  padding: 15px 10px 10px 10px;
+}
+
+.post_image {
+  max-width: 600px;
+  max-height: 600px;
+  object-fit: contain;
+}
+
+.CompletePostIncludeComment {
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+  align-items: flex-start;
+}
+
+.captionName {
+  font-weight: bold;
+  padding: 5px;
+}
+
+.captioninfo {
+align-self: start;
+flex-direction: row;
+display: flex;
+padding: 4px;
+}
+
+.captions {
+  padding: 5px;
+}
