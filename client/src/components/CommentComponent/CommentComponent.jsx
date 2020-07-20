@@ -36,7 +36,7 @@ export default class CommentComponent extends Component {
   }
 
   render() {
-    const { comment, currentUser, handleCommentUpdate } = this.props;
+    const { comment, currentUser, handleCommentUpdate, history } = this.props;
     return (
       <div className="comment_body">
         <>
@@ -49,7 +49,8 @@ export default class CommentComponent extends Component {
           {this.state.edit ?
            <form onSubmit={(e) => {
             e.preventDefault();
-            handleCommentUpdate(comment.id, this.state.content);
+                  handleCommentUpdate(comment.id, { content: this.state.content });
+                  this.setState({edit: false})
             history.push('/');
           }}>
             <input

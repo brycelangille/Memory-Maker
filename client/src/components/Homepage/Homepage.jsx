@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import axios from "axios";
-import { getAllPosts, createComment, deletePost, putComment, deleteComment} from '../../services/api-helper'
+import { getAllPosts, createComment, deletePost, putComment, updateComment, deleteComment} from '../../services/api-helper'
 import CreateComment from '../CreateComment/CreateComment';
 import UpdatePost from '../UpdatePost/UpdatePost'
 import CommentComponent from '../CommentComponent/CommentComponent'
@@ -23,17 +23,16 @@ export default class Homepage extends Component {
   handleCreateComment = async (id, commentData) => {
     console.log("snowbaard")
     const newComment = await createComment(id, commentData);
-    this.props.addNewComment(newComment, id);
-    // this.props.history.push('/');
+    await this.props.addNewComment(newComment, id);
+    this.props.history.push('/');
   }
 
   handleCommentUpdate = async (id, commentData) => {
-    const response = await updateComment(id);
-    const updatePost = response.data
-    const updateComment = this.state.posts.find(post => post.id == updatePost.post_id)
-    updatePost.comments = updateComment.comments.filter(comment => comment.id !== updateComment.id)
+    const updateComment = await putComment(id, commentData);
+    const updatePost = this.state.posts.find(post => post.id == updateComment.post_id)
+    updatePost.comments = [...updatePost.comments.filter(comment => comment.id !== updateComment.id), updateComment]
     this.setState(prevState => ({
-      posts: prevState.posts.map(post => post.id == updatePost.id ? updatePost: post )
+      posts: prevState.posts.map(post => post.id == updatePost.id ? updatePost : post ) 
     }))
   }
   
@@ -76,11 +75,13 @@ export default class Homepage extends Component {
                 <div className="captioninfo">
                 <p className="captionName" >{post.user.username} </p>
                   <p className="captions">{post.captions}</p>
-                  </div>
-            </div>
-            <div>
+                </div>
+                </div>
+        
+              <div>
+    
           {post && post.comments.map(comment => 
-            <CommentComponent comment={comment} handleCommentDelete={this.handleCommentDelete} handleCommentUpdate={this.handleCommentUpdate} currentUser={this.props.currentUser}  />
+            <CommentComponent comment={comment} handleCommentDelete={this.handleCommentDelete} handleCommentUpdate={this.handleCommentUpdate} currentUser={this.props.currentUser} {...this.props} />
               )}
               </div> 
               </div>

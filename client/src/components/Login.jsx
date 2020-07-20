@@ -24,7 +24,7 @@ export default class Login extends Component {
       <div id="wrapper">
         <div class="main-content">
           <div class="header">
-          <img src={logo} />
+          <img src={logo} className="logo" />
     </div>
       <form onSubmit={(e) => {
         e.preventDefault();

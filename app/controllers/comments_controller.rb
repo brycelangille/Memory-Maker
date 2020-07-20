@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
   if @comment.update(comment_params)
-    render json: @comment, include: :post, status: :ok
+    render json: @comment, include: [:post, :user], status: :ok
   else
     render json: @comment.errors, status: :unprocessable_entity
   end

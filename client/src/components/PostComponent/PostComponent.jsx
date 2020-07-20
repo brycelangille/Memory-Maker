@@ -4,7 +4,9 @@ import { getOnePost, putPost } from '../../services/api-helper'
 export default class UpdatePost extends Component {
   state = {
     captions: '',
-    image_url: ''
+    image_url: '',
+    showOptions: false,
+    edit: false
   }
 
   async componentDidMount() {
@@ -34,11 +36,24 @@ export default class UpdatePost extends Component {
     })
   }
 
+  toggleOptions = () => {
+    this.setState((prevState) => ({
+      showOptions: !prevState.showOptions,
+    }));
+  };
+
+  toggleEdit = () => {
+    console.log("toggleEdit")
+    this.setState((prevState) => ({
+      edit: !prevState.edit,
+    }));
+  };
+
+
   handlePostUpdate = async (id, postData) => {
     const newPost = await putPost(id, postData);
     console.log(newPost)
    this.props.getPosts()
-
   }
 
   render() {
@@ -72,7 +87,7 @@ export default class UpdatePost extends Component {
                     onChange={this.handleChange}
                 />
         </label>
-        <button>Submit</button>
+         <input type="submit" />
       </form>
     )
   }

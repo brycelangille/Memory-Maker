@@ -22,7 +22,6 @@ export default class CreateComment extends Component {
           onSubmit={(e) => {
             e.preventDefault();
             this.props.handleCreateComment(this.props.id, this.state);
-            this.setState({ content: "" });
           }}
         >
           <label>

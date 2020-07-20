@@ -51,7 +51,7 @@ export const createComment = async (posts_id, commentData) => {
   return resp.data;
 }
 
-export const putComment = async ( commentData, id) => {
+export const putComment = async (id, commentData) => {
   const resp = await api.put(`/posts/1/comments/${id}`, { comment: commentData })
   return resp.data;
 }

@@ -19,7 +19,6 @@ export default class CreatePost extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         handleCreatePost(this.state);
-        history.push('/');
       }}>
         <h3>Create A Post</h3>
         <label>

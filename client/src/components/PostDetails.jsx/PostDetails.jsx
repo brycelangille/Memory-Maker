@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getOnePost } from '../../services/api-helper'
+import './PostDetails.scss'
 
 export default class PostDetails extends Component {
   constructor(props) {
@@ -29,27 +30,31 @@ export default class PostDetails extends Component {
   render() {
     return (
       <>
-      <div>
+      <div className="everything">
         {this.state.post && 
-            <div>
+            <div className="CompletePostIncludeComment">
             <button onClick={this.props.clearVisablePost}>X</button>
-          <img src={this.state.post.user.image_url} />
-          <p>{this.state.post.user.username}</p>
-          <img src={this.state.post.image_url} />
-          <p>{this.state.post.captions}</p>
-          </div>
+            <div className="Posts">
+              <div className="Userinfo">
+          <img src={this.state.post.user.image_url} className="usericon"  />
+              <p className="usernameicon">{this.state.post.user.username}</p>
+              </div>
+          <img src={this.state.post.image_url} className="post_image" />
+          <p className="captions">{this.state.post.captions}</p>
+            </div>
+            </div>
   }
         </div>
-        <div>
+        <div className="ThePostComments">
           {this.state.post && this.state.post.comments.map(comment => 
         <>
-           <img src={comment.image_url} />
+           <img src={comment.image_url} className="CommentImage" />
               <p>{comment.content}</p>
               <img src={comment.user.image_url} />
               <p>{comment.user.username}</p>
               </>
-      ) }
-        </div> 
+          )}
+          </div>
         </>
     )
   }

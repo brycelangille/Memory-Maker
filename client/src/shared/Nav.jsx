@@ -1,26 +1,37 @@
-import React from 'react'
-import { NavLink , Link} from 'react-router-dom'
-// import { ReactComponent as Home } from './assets/white-bookmark-icon.svg'
-// import { ReactComponent as Search } from './assets/white-bookmark-icon.svg'
-// import { ReactComponent as CreatePost } from './assets/white-bookmark-icon.svg'
-// import { ReactComponent as Notification } from './assets/white-bookmark-icon.svg'
-// import { ReactComponent as CurrentUserPage } from './assets/white-bookmark-icon.svg'
-import './Nav.scss'
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { ReactComponent as Home } from "./assets/Home.svg";
+import { ReactComponent as User } from "./assets/User.svg";
+import { ReactComponent as CreatePost } from "./assets/CreatePost.svg";
+import { ReactComponent as Register } from "./assets/Register.svg";
+import { ReactComponent as Login } from "./assets/Login.svg";
+// import { ReactComponent as CreatePost } from './assets/CreatePost_icon.png'
+// import { ReactComponent as CurrentUserPage } from './assets/CurrentUser_icon.png'
+import "./Nav.scss";
 
 export default function Nav(props) {
   return (
     <nav>
-      <div className="wrapper">
-        <div className="nav-list ">
-          <div>
-            <Link to="/" >Home</Link>
-            <Link to="/Login" >Login</Link>
-            <Link to="/Register" >Register</Link>
-            {props.currentUser && <Link to={`/users/${props.currentUser.id}`}>UserPage</Link>}
-            <Link to='/createpost' >CREATE A POST</Link>
-        </div>
-        </div>
-        </div>
-</nav>
-  )
+      <div className="icon">
+        <Link className="HomeiconPlease" to="/">
+          <Home />
+        </Link>
+        {props.currentUser && (
+          <Link to={`/users/${props.currentUser.id}`} className="Usericon">
+            <User />
+          </Link>
+        )}
+        <Link to="/createpost" className="Createicon">
+          <CreatePost />
+        </Link>
+        <Link to="/Login" className="Loginicon">
+          {" "}
+          <Login />{" "}
+        </Link>
+        <Link to="/Register" className="Registericon">
+          <Register />
+        </Link>
+      </div>
+    </nav>
+  );
 }
