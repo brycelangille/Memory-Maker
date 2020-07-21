@@ -87,7 +87,7 @@ class App extends Component {
     });
   };
 
-  asaddNewComment = (newComment, id) => {
+  addNewComment = (newComment, id) => {
     const updatedPost = this.state.posts.find(
       (post) => post.id == newComment.post_id
     );

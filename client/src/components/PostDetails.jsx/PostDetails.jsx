@@ -47,14 +47,15 @@ export default class PostDetails extends Component {
         </div>
         <div className="ThePostComments">
           {this.state.post && this.state.post.comments.map(comment => 
-        <>
-           <img src={comment.image_url} className="CommentImage" />
-              <p>{comment.content}</p>
-              <img src={comment.user.image_url} />
-              <p>{comment.user.username}</p>
+            <>
+              <div className="commentcomment1">
+              <img src={comment.user.image_url} className="commentuser_image" />
+              <p className="usernameicon_commenter">{comment.user.username}</p>
+                <p className="commentContent">{comment.content}</p>
+                </div>
               </>
           )}
-          </div>
+        </div>
         </>
     )
   }

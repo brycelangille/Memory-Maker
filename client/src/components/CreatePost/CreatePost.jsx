@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './CreatePost.scss'
 
 export default class CreatePost extends Component {
   state = {
@@ -17,6 +18,7 @@ export default class CreatePost extends Component {
     const { handleCreatePost, history } = this.props;
     return (
       <form onSubmit={(e) => {
+        className="PostEverything"
         e.preventDefault();
         handleCreatePost(this.state);
       }}>
@@ -42,7 +44,7 @@ export default class CreatePost extends Component {
                     onChange={this.handleChange}
                 />
         </label>
-        <button>Submit</button>
+        <button className="submitButton">Submit</button>
       </form>
     )
   }

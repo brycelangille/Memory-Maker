@@ -23,7 +23,7 @@ export default class Homepage extends Component {
   handleCreateComment = async (id, commentData) => {
     console.log("snowbaard")
     const newComment = await createComment(id, commentData);
-    await this.props.addNewComment(newComment, id);
+    this.props.addNewComment(newComment, id);
     this.props.history.push('/');
   }
 
@@ -86,8 +86,10 @@ export default class Homepage extends Component {
               </div> 
               </div>
             <CreateComment id={post.id} handleCreateComment={this.handleCreateComment} />
-            <button onClick={() => this.handlePostDelete(post.id)}>Delete</button>
-            <button onClick={() => this.handleUpdate(post.id)}>Update</button>
+            <div className="update-deletebuttons">
+            <button classsNme="DeleteButton" onClick={() => this.handlePostDelete(post.id)}>Delete</button>
+            <button classsNme="UpdateButton" onClick={() => this.handleUpdate(post.id)}>Update</button>
+            </div>
           </div>
         ))}
       </div>
