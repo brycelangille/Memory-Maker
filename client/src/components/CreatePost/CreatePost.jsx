@@ -17,8 +17,7 @@ export default class CreatePost extends Component {
   render() {
     const { handleCreatePost, history } = this.props;
     return (
-      <form onSubmit={(e) => {
-        className="PostEverything"
+      <form className="PostEverything" onSubmit={(e) => {
         e.preventDefault();
         handleCreatePost(this.state);
       }}>
