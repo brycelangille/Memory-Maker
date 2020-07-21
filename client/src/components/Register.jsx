@@ -5,7 +5,8 @@ export default class Register extends Component {
   state = {
     username: "",
     email: "",
-    password: ""
+    password: "", 
+    image_url
   }
 
   handleChange = (e) => {
@@ -33,9 +34,9 @@ export default class Register extends Component {
                 <div class="l-part">
         <h3>Register</h3>
         <label>
-          Username:
           <input
-            type="text"
+                  type="text"
+                  placeholder="Username"
                   name="username"
                   class="input-1" 
             value={username}
@@ -45,10 +46,10 @@ export default class Register extends Component {
               <br />
 
         <label>
-          Email:
           <input
             type="text"
-                    name="email"
+                  name="email"
+                  placeholder="Email"
                     class="input-2" 
             value={email}
             onChange={this.handleChange}
@@ -56,14 +57,24 @@ export default class Register extends Component {
                 </label>
         <br />
         <label>
-          Password:
           <input
-            type="password"
+                  type="password"
+                  placeholder="Password"
                   name="password"
                   class="input-1" 
                     value={password}
             onChange={this.handleChange}
           />
+              </label>
+              <label>
+          <input 
+                    name='image_url'
+                    className="input-1"
+                    placeholder='Image Link'
+                     type='text'
+                    value={this.state.image_url}
+                    onChange={this.handleChange}
+                />
         </label>
         <br />
                 <button class="btn" >Submit</button>

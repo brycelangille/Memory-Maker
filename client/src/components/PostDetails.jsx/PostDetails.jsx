@@ -32,7 +32,7 @@ export default class PostDetails extends Component {
       <>
       <div className="everything">
         {this.state.post && 
-            <div className="CompletePostIncludeComment">
+            <div className="CompletePostIncludeComment123">
             <button onClick={this.props.clearVisablePost}>X</button>
             <div className="Posts">
               <div className="Userinfo">

@@ -99,6 +99,10 @@ class App extends Component {
     }));
   };
 
+  reload = () => {
+    window.location.reload()
+  }
+
   render() {
     return (
       <div className="body">
@@ -120,6 +124,7 @@ class App extends Component {
                   addNewComment={this.addNewComment}
                   {...props}
                   clearVisablePost={this.clearVisablePost}
+                  reload={this.reload}
                 />
               )}
             />
@@ -174,6 +179,7 @@ class App extends Component {
                 {...props}
                 currentUser={this.state.currentUser}
                 getPosts={this.getPosts}
+                reload={this.reload}
               />
             )}
           />

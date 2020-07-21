@@ -25,6 +25,7 @@ export default class Homepage extends Component {
     const newComment = await createComment(id, commentData);
     this.props.addNewComment(newComment, id);
     this.props.history.push('/');
+    this.props.reload()
   }
 
   handleCommentUpdate = async (id, commentData) => {
@@ -57,7 +58,6 @@ export default class Homepage extends Component {
     this.props.clearVisablePost()
     this.props.history.push(`/post/${id}/update`)
   }
-
 
 
   render() {

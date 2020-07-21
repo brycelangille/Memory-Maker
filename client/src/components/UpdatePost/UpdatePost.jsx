@@ -37,8 +37,7 @@ export default class UpdatePost extends Component {
   handlePostUpdate = async (id, postData) => {
     const newPost = await putPost(id, postData);
     console.log(newPost)
-   this.props.getPosts()
-
+this.props.reload()
   }
 
   render() {

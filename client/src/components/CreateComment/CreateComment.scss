@@ -30,6 +30,20 @@
   padding: 15px 5px 15px 5px;
   background-color: white;
   color: lightblue;
-  opacity: 75%;
+  opacity: 0.75;
   border: 0px;
 }
+
+@media (max-width: 580px){
+  .content-input{
+        width: 550px;
+    }
+    .postButton{
+      width: 10vw;
+    }
+  }
+  
+    @media (max-width: 870px){
+      .content-input{
+    }
+    }

@@ -23,17 +23,16 @@ export default class CreatePost extends Component {
       }}>
         <h3>Create A Post</h3>
         <label>
-          Caption:
           <input
             name="captions"
             className="input-caption"
+            placeholder='Caption'
             type='text'
             value={this.state.caption}
             onChange={this.handleChange}
           />
         </label>
         <label>
-          Add Image:
           <input 
                     name='image_url'
                     className="input-image-link"

@@ -17,7 +17,9 @@ h3 {
   border: 0px solid #ddd;
   outline-width: 0;
   box-shadow: none;
-  
+  margin-top: 20px;
+  border: lightgray 1px solid;
+  border-radius: 50px;
 }
 
 .input-image-link{
@@ -28,7 +30,9 @@ h3 {
   border: 0px solid #ddd;
   outline-width: 0;
   box-shadow: none;
-  
+  margin-top: 20px;
+  border: lightgray 1px solid;
+  border-radius: 50px;
 }
 
 .content-caption::placeholder {
@@ -47,6 +51,38 @@ h3 {
   padding: 15px 5px 15px 5px;
   background-color: white;
   color: lightblue;
-  opacity: 75%;
+  opacity: 0.95;
   border: 0px;
+  margin-top: 20px;
+  border-radius: 15px;
 }
+
+@media (max-width: 580px){
+  .PostEverything{
+        width: 1000px;
+    }
+    .input-caption {
+      width: 500px
+    }
+    .input-image-link{
+      width: 500px
+    }
+    .submitButton{
+      width: 20vw;
+  }
+}
+  
+    @media (max-width: 870px){
+      .PostEverything {
+          width: 1000px;
+        }
+        .input-caption {
+          width: 500px
+        }
+        .input-image-link{
+          width: 500px
+        }
+        .submitButton{
+          width: 20vw;
+      }
+    }

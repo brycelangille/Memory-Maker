@@ -23,6 +23,7 @@ body {
   background-color: #fff;
   border: 2px solid #e6e6e6;
   padding: 40px 50px;
+  border-radius: 15px;
 }
 
 .header {
@@ -41,11 +42,11 @@ body {
 .input-1,
 .input-2 {
   width: 100%;
-  margin-bottom: 5px;
   padding: 8px 12px;
   border: 1px solid #dbdbdb;
   box-sizing: border-box;
-  border-radius: 3px;
+  border-radius: 15px;
+  margin-top: 50px;
 }
 
 .overlap-text {
@@ -71,7 +72,8 @@ body {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 15px;
+  margin-top: 50px;
 }
 
 .sub-content {
@@ -81,6 +83,7 @@ body {
   border: 1px solid #e6e6e6;
   padding: 20px 50px;
   background-color: #fff;
+  font-size: lar;
 }
 
 .s-part {
@@ -106,3 +109,36 @@ input:focus {
 }
 
 // https://codepen.io/azamatmj/pen/LdrMXv
+
+@media (max-width: 580px){
+  .wrapper {
+    width: 1000px;
+  }
+  .main-content {
+        width: 500px;
+        // height: 500px;
+    }
+    .input-1,
+    .input-2{
+      width: 200px
+    }
+    .sub-content{
+      width: 500px;
+      font-size: large;
+  }
+}
+  
+    @media (max-width: 870px){
+      .wrapper {
+          width: 1000px;
+        }
+        .main-content {
+          width: 500px
+        }
+        .input-image-link{
+          width: 500px
+        }
+        .submitButton{
+          width: 20vw;
+      }
+    }

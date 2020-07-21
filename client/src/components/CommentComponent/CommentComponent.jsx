@@ -77,7 +77,7 @@ export default class CommentComponent extends Component {
               </button>
             </>
           )}
-            {currentUser.id == comment.user_id && <button onClick={this.toggleOptions}>...</button>}
+            {currentUser && currentUser.id == comment.user_id && <button onClick={this.toggleOptions}>...</button>}
             </div>
             </div>
         </>

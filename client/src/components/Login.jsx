@@ -34,11 +34,11 @@ export default class Login extends Component {
              <div class="l-part">
         <h3>Login</h3>
         <label>
-          Username:
           <input
             type="text"
                   name="username"
                   class="input-1" 
+                  placeholder="Username"
             value={username}
             onChange={this.handleChange}
           />
@@ -46,11 +46,11 @@ export default class Login extends Component {
               <br />
               <div class="overlap-text">
         <label>
-          Password:
           <input
             type="password"
                     name="password"
                     class="input-2" 
+                    placeholder="Password"
             value={password}
             onChange={this.handleChange}
                   />
