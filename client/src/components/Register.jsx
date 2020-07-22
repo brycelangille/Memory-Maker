@@ -5,8 +5,7 @@ export default class Register extends Component {
   state = {
     username: "",
     email: "",
-    password: "", 
-    image_url
+    password: ""
   }
 
   handleChange = (e) => {
@@ -66,16 +65,6 @@ export default class Register extends Component {
             onChange={this.handleChange}
           />
               </label>
-              <label>
-          <input 
-                    name='image_url'
-                    className="input-1"
-                    placeholder='Image Link'
-                     type='text'
-                    value={this.state.image_url}
-                    onChange={this.handleChange}
-                />
-        </label>
         <br />
                 <button class="btn" >Submit</button>
                 </div>

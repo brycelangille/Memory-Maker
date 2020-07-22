@@ -154,8 +154,47 @@ https://imgur.com/gallery/Z19S62E
 
 ## Code Showcase
 
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
+```
+  async componentDidMount () {
+    const posts = await getAllPosts()
+    console.log(posts)
+    this.setState({posts})
+  }
+  
+  handleCreateComment = async (id, commentData) => {
+    console.log("snowbaard")
+    const newComment = await createComment(id, commentData);
+    this.props.addNewComment(newComment, id);
+    this.props.history.push('/');
+    this.props.reload()
+  }
+
+  handleCommentUpdate = async (id, commentData) => {
+    const updateComment = await putComment(id, commentData);
+    const updatePost = this.state.posts.find(post => post.id == updateComment.post_id)
+    updatePost.comments = [...updatePost.comments.filter(comment => comment.id !== updateComment.id), updateComment]
+    this.setState(prevState => ({
+      posts: prevState.posts.map(post => post.id == updatePost.id ? updatePost : post ) 
+    }))
+  }
+  
+  handleCommentDelete = async (id) => {
+    const response = await deleteComment(id);
+    const deletedComment = response.data
+    const updatePost = this.state.posts.find(post => post.id == deletedComment.post_id)
+    updatePost.comments = updatePost.comments.filter(comment => comment.id !== deletedComment.id)
+    this.setState(prevState => ({
+      posts: prevState.posts.map(post => post.id == updatePost.id ? updatePost: post )
+    }))
+  }
+```
+```
+[:user, {comments:{include: :user}}]
+```
 
 ## Code Issues & Resolutions
 
-> Use this section to list of all major issues encountered and their resolution.
+Throughtout this projects there were alot of highs and lows when it came to resolutions. The challenge was in the rough.
+Someone onces said, "It's beauty in the struggle, ugliness in the success" -J. Cole.
+
+
